@@ -6,14 +6,44 @@ import { refs } from './refs';
 export const createGallery = images => {
   const markup = images
     .map(
-      ({ webformatURL, largeImageURL, tags }) =>
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) =>
         `<li class="gallery-item">
-            <a class="gallery-link" href="${largeImageURL}">
+            <a
+              class="gallery-link"
+              href="${largeImageURL}"
+            >
               <img
                 class="gallery-image"
                 src="${webformatURL}"
                 alt="${tags}"
               />
+
+              <ul class="img-info">
+                <li>
+                  <p class="img-info-title">Likes</p>
+                  <p class="img-info-value">${likes}</p>
+                </li>
+                <li>
+                  <p class="img-info-title">Views</p>
+                  <p class="img-info-value">${views}</p>
+                </li>
+                <li>
+                  <p class="img-info-title">Comments</p>
+                  <p class="img-info-value">${comments}</p>
+                </li>
+                <li>
+                  <p class="img-info-title">Downloads</p>
+                  <p class="img-info-value">${downloads}</p>
+                </li>
+              </ul>
             </a>
           </li>`
     )
