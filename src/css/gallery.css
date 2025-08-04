@@ -7,7 +7,7 @@
   max-width: 371px;
 }
 
-.form input {
+.search-input {
   max-width: 272px;
   width: 100%;
   border-radius: 4px;
@@ -23,19 +23,19 @@
   margin-right: 8px;
 }
 
-.form input:hover {
+.search-input:hover {
   border-color: #2e2f42;
 }
 
-.form input:active {
+.search-input:active {
   border-color: #4e75ff;
 }
 
-.form button {
+.sub-btn {
   border-radius: 8px;
   border-style: none;
   padding: 8px 16px;
-  width: 91px;
+  max-width: 91px;
   height: 40px;
 
   background-color: #4e75ff;
@@ -45,7 +45,7 @@
   color: #fff;
 }
 
-.form button:hover {
+.sub-btn:hover {
   background-color: #6c8cff;
 }
 
@@ -56,9 +56,8 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 5rem;
-  margin-top: 6rem;
-  margin-bottom: 6rem;
+  max-width: 6rem;
+  margin-top: 7rem;
   margin-left: auto;
   margin-right: auto;
 }

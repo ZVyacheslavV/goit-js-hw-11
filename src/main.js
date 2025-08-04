@@ -1,3 +1,13 @@
+import axios from 'axios';
+import { getImagesByQuery } from './js/pixabay-api';
+import { createGallery } from './js/render-functions';
+
+export const refs = {
+  searchForm: document.querySelector('.form'),
+  loader: document.querySelector('.loader'),
+  gallery: document.querySelector('.gallery'),
+};
+
 /* const fetchUsersBtn = document.querySelector('.btn');
 const fetchUsersBtnTwo = document.querySelector('.btn-two');
 
@@ -32,17 +42,14 @@ fetchUsersBtnTwo.addEventListener('click', () => {
 });
  */
 
-import axios from 'axios';
+refs.searchForm.addEventListener('submit', e => {
+  e.preventDefault();
 
-axios
-  .get('https://jsonplaceholder.typicode.com/users')
-  .then(response => {
-    console.log(response.data);
-    console.log(response.status);
-    console.log(response.statusText);
-    console.log(response.headers);
-    console.log(response.config);
-  })
-  .catch(error => {
-    console.log(error);
-  });
+  const searchQuery = e.target.elements['search-text'].value.trim();
+
+  const images = getImagesByQuery(searchQuery);
+  /* createGallery(images); */
+  console.log(images);
+
+  e.target.reset();
+});
