@@ -3,13 +3,16 @@
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  max-width: 371px;
+  gap: 8px;
+  max-width: 471px;
   margin-bottom: 32px;
 }
 
 .search-input {
-  max-width: 272px;
-  width: 100%;
+  width: 272px;
+  /* min-width: 0; */
+  /* width: 100%; */
+  box-sizing: border-box;
   border-radius: 4px;
   height: 40px;
   background-color: #fff;
@@ -19,8 +22,6 @@
   padding: 8px 16px;
   letter-spacing: 0.04em;
   color: #808080;
-
-  margin-right: 8px;
 }
 
 .search-input:hover {
@@ -93,13 +94,8 @@
 }
 
 .img-info > li {
-  /*  margin-right: 28px; */
   width: fit-content;
 }
-
-/* .img-info li:last-child {
-  margin-left: 32px;
-} */
 
 .img-info-title {
   font-weight: 600;
