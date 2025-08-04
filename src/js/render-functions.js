@@ -67,5 +67,5 @@ export const hideLoader = () => {
 };
 
 export const clearGallery = () => {
-  refs.gallery.innerHTML = '<ul class="gallery"></ul>';
+  refs.gallery.innerHTML = '';
 };
