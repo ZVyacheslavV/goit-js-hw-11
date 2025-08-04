@@ -1,4 +1,5 @@
 import { getImagesByQuery } from './js/pixabay-api';
+import { refs } from './js/refs';
 import {
   clearGallery,
   createGallery,
@@ -6,29 +7,29 @@ import {
   showLoader,
 } from './js/render-functions';
 
-export const refs = {
-  searchForm: document.querySelector('.form'),
-  loader: document.querySelector('.loader'),
-  gallery: document.querySelector('.gallery'),
-};
+console.log('listener attached');
+refs.searchForm.addEventListener(
+  'submit',
+  e => {
+    e.preventDefault();
+    clearGallery();
 
-refs.searchForm.addEventListener('submit', e => {
-  e.preventDefault();
-  clearGallery();
+    const searchQuery = e.target.elements['search-text'].value.trim();
+    if (!searchQuery) return;
 
-  const searchQuery = e.target.elements['search-text'].value.trim();
-  if (!searchQuery) return;
+    showLoader();
 
-  showLoader();
-
-  getImagesByQuery(searchQuery)
-    .then(images => {
-      createGallery(images);
-      console.log(images);
-    })
-    .catch(/* error => console.log(error) */)
-    .finally(() => {
-      hideLoader();
-      e.target.reset();
-    });
-});
+    getImagesByQuery(searchQuery)
+      .then(images => {
+        if (!images) return;
+        createGallery(images);
+        console.log(images);
+      })
+      .catch(/* error => console.log(error) */)
+      .finally(() => {
+        hideLoader();
+        e.target.reset();
+      });
+  },
+  { once: true }
+);

@@ -23,13 +23,13 @@ export const getImagesByQuery = query =>
             'Sorry, there are no images matching your search query. Please try again!',
           position: 'topRight',
         });
-        return [];
+        return null;
       }
       return data.hits;
     })
     .catch(error => {
       console.log(error);
-      return [];
+      return null;
     });
 
 /* axios

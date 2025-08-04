@@ -1,6 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import { refs } from '../main';
+import { refs } from './refs';
+/* import { refs } from '../main'; */
 
 export const createGallery = images => {
   const markup = images
