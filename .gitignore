@@ -7,9 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-#git rm -r --cached node_scripts_personal
+# git rm -r --cached node_scripts_personal
 node_scripts_personal
+
+node_modules
 dist
 dist-ssr
 *.local
