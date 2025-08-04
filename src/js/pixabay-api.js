@@ -1,30 +1,36 @@
 import axios from 'axios';
-import { refs } from '../main';
 import iziToast from 'izitoast';
-// import 'izitoast/dist/css/iziToast.min.css';
+import 'izitoast/dist/css/iziToast.min.css';
 
-export const getImagesByQuery = query => {
+const BASE_URL = 'https://pixabay.com/api/';
+const API_KEY = '51625695-85db02b03381982e3fb3bbea7';
+
+export const getImagesByQuery = query =>
   axios
-    .get('https://pixabay.com/api/', {
+    .get(BASE_URL, {
       params: {
-        key: '51625695-85db02b03381982e3fb3bbea7',
-        q: `${query}`,
+        key: API_KEY,
+        q: query,
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
       },
     })
-    .then(response => {
-      if (!response)
+    .then(({ data }) => {
+      if (!data.hits || data.hits.length === 0) {
         iziToast.error({
           message:
             'Sorry, there are no images matching your search query. Please try again!',
           position: 'topRight',
         });
-      return response;
+        return [];
+      }
+      return data.hits;
     })
-    .catch(console.log('error'));
-};
+    .catch(error => {
+      console.log(error);
+      return [];
+    });
 
 /* axios
   .get('https://jsonplaceholder.typicode.com/users')

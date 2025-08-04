@@ -3,11 +3,10 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import { refs } from '../main';
 
 export const createGallery = images => {
-  const markup = images.map(
-    images
-      .map(
-        ({ webformatURL, largeImageURL, tags }) =>
-          `<li class="gallery-item">
+  const markup = images
+    .map(
+      ({ webformatURL, largeImageURL, tags }) =>
+        `<li class="gallery-item">
             <a class="gallery-link" href="${largeImageURL}">
               <img
                 class="gallery-image"
@@ -16,15 +15,27 @@ export const createGallery = images => {
               />
             </a>
           </li>`
-      )
-      .join('\n')
-  );
+    )
+    .join('\n');
+
+  refs.gallery.innerHTML = markup;
 
   const galleryLightBox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
   });
 
-  refs.gallery.innerHTML = markup;
   galleryLightBox.refresh();
+};
+
+export const showLoader = () => {
+  refs.loader.classList.remove('hidden');
+};
+
+export const hideLoader = () => {
+  refs.loader.classList.add('hidden');
+};
+
+export const clearGallery = () => {
+  refs.gallery.innerHTML = '<ul class="gallery"></ul>';
 };
