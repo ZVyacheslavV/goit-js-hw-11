@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-#node_scripts_personal
+node_scripts_personal
 dist
 dist-ssr
 *.local
