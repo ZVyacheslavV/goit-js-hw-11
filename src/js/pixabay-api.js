@@ -18,16 +18,20 @@ export const getImagesByQuery = query =>
     })
     .then(({ data }) => {
       if (!data.hits || data.hits.length === 0) {
-        iziToast.error({
+        /* iziToast.error({
           message:
             'Sorry, there are no images matching your search query. Please try again!',
           position: 'topRight',
-        });
+        }); */
         return null;
       }
       return data.hits;
     })
     .catch(error => {
+      iziToast.error({
+        message: `There is an error during getting image: ${error}`,
+        position: 'topRight',
+      });
       console.log(error);
       return null;
     });
