@@ -14,7 +14,7 @@ refs.searchForm.addEventListener('submit', e => {
 
   const searchQuery = e.target.elements['search-text'].value.trim();
   if (!searchQuery) {
-    iziToast.error({ message: 'Please, fill input', position: 'topRight' });
+    iziToast.error({ message: 'Please, fill the input', position: 'topRight' });
     return;
   }
 
