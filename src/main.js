@@ -23,7 +23,7 @@ refs.searchForm.addEventListener('submit', e => {
 
   getImagesByQuery(searchQuery)
     .then(images => {
-      if (!images || images.length === 0) {
+      if (!(images?.length > 0) /* !images || !images.length === 0 */) {
         iziToast.error({
           message:
             'Sorry, there are no images matching your search query. Please try again!',
