@@ -18,11 +18,12 @@ refs.searchForm.addEventListener('submit', e => {
     return;
   }
 
+  clearGallery();
   showLoader();
 
   getImagesByQuery(searchQuery)
     .then(images => {
-      if (!images) {
+      if (!images || images.length === 0) {
         iziToast.error({
           message:
             'Sorry, there are no images matching your search query. Please try again!',
@@ -30,7 +31,6 @@ refs.searchForm.addEventListener('submit', e => {
         });
         return;
       }
-      clearGallery();
       createGallery(images);
     })
     .catch(error => {
